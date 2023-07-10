@@ -1,3 +1,13 @@
 {% extends 'base.html' %} {% block content %}
-<h1>What would you like to view?</h1>
+<div class="card text-center position-absolute top-50 start-50 translate-middle text-bg-info" style="width: 50em;">
+    <div class="card-header fs-2 table-dark">
+      What would you like to view?
+    </div>
+    <ul class="list-group list-group-flush fs-4">
+      <li class="list-group-item py-3">View Employees</li>
+      <li class="list-group-item py-3">View Departments</li>
+      <li class="list-group-item py-3">View Roles</li>
+      <li class="list-group-item py-3">View Total Budget</li>
+    </ul>
+  </div>
 {% endblock %}

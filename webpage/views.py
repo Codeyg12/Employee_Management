@@ -11,3 +11,12 @@ def add(request):
 
 def view(request):
     return render(request, 'view.html', {})
+
+def add_employee(request):
+    return render(request, 'add_employee.html', {})
+
+def add_department(request):
+    return render(request, 'add_department.html', {})
+
+def add_role(request):
+    return render(request, 'add_role.html', {})
