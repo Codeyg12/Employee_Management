@@ -20,3 +20,15 @@ def add_department(request):
 
 def add_role(request):
     return render(request, 'add_role.html', {})
+
+def view_employees(request):
+    return render(request, 'view_employees.html', {})
+
+def view_departments(request):
+    return render(request, 'view_departments.html', {})
+
+def view_roles(request):
+    return render(request, 'view_roles.html', {})
+
+def view_budgets(request):
+    return render(request, 'view_budgets.html', {})
