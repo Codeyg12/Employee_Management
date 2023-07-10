@@ -41,9 +41,6 @@ def register(request):
 def add(request):
     return render(request, 'add.html', {})
 
-# def view(request):
-#     return render(request, 'view.html', {})
-
 def add_employee(request):
     return render(request, 'add_employee.html', {})
 
