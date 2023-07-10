@@ -1,6 +1,43 @@
 {% extends 'base.html' %} {% block content %}
+{% if user.is_authenticated %}
+<div class="card text-center position-absolute top-50 start-50 translate-middle text-bg-info" style="width: 50em;">
+    <div class="card-header fs-2 table-dark">
+        What would you like to view?
+    </div>
+    <ul class="list-group list-group-flush fs-4">
+        <li class="list-group-item py-3">
+            <a
+              href="{% url 'view_employees' %}"
+              class="link-dark text-decoration-none link-opacity-50-hover"
+              >View Employee</a
+            >
+          </li>
+          <li class="list-group-item py-3">
+            <a
+              href="{% url 'view_departments' %}"
+              class="link-dark text-decoration-none link-opacity-50-hover"
+              >View Departments</a
+            >
+          </li>
+          <li class="list-group-item py-3">
+            <a
+              href="{% url 'view_roles' %}"
+              class="link-dark text-decoration-none link-opacity-50-hover"
+              >View Roles</a
+            >
+          </li>
+          <li class="list-group-item py-3">
+            <a
+              href="{% url 'view_budgets' %}"
+              class="link-dark text-decoration-none link-opacity-50-hover"
+              >View Budgets</a
+            >
+          </li>
+    </ul>
+</div>
+{% else %}
 <div class="col-md-6 offset-md-3">
-    <h1>Login</h1>
+    <h1 class="text-center">Login</h1>
     <br />
   
     <form action="{% url 'home' %}" method="POST">
@@ -26,4 +63,5 @@
       <button type="submit" class="btn btn-secondary">Login</button>
     </form>
   </div>
+  {% endif %}
 {% endblock %}
