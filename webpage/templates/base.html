@@ -18,7 +18,7 @@
       <br />
       {% if messages %} {% for message in messages %}
       {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <div class="alert alert-success alert-dismissible fade show" id="alert-message" role="alert">
         {{ message }}
         <button
           type="button"
@@ -28,7 +28,7 @@
         ></button>
       </div>
       {% else %}
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <div class="alert alert-danger alert-dismissible fade show" id="alert-message" role="alert">
         {{ message }}
         <button
           type="button"
@@ -47,5 +47,12 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
+    <script>
+          let messageEl = document.getElementById('alert-message')
+
+          setTimeout(() => {
+            messageEl.style.display = 'none';
+          }, 5000)
+    </script>
   </body>
 </html>
