@@ -5,7 +5,6 @@ from .forms import RegisterForm
 
 # Create your views here.
 def home(request):
-    print('MESSAGES', messages)
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
