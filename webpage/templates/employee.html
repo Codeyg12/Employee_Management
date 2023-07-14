@@ -3,13 +3,14 @@
 <a href="{% url 'view_employees' %}" class="btn btn-outline-light mb-3"><i class="fa-solid fa-arrow-left"></i></a>
 <div class="card">
     <div class="card-header text-bold fs-2">
-      {{ single_employee.first_name }} {{ single_employee.last_name }}
+        {{ single_employee.first_name }} {{ single_employee.last_name }}
     </div>
     <div class="card-body">
-      <p class="card-text"><strong>Role: </strong>{{ single_employee.employee_role }}</p>
-      <p class="card-text"><strong>Department: </strong>{{ single_employee.employee_department }}</p>
-      <p class="card-text">
-        <strong>Salary: </strong>{{ single_employee.employee_role.salary }}
+        <p class="card-text"><strong>Role: </strong>{{ single_employee.employee_role }}</p>
+        <p class="card-text"><strong>Department: </strong>{{ single_employee.employee_department }}</p>
+        <p class="card-text">
+          {% load my_filters %}
+        <strong>Salary: </strong>{{ single_employee.employee_role.salary | currency }}
       </p>
       <p class="card-text"><strong>Manager: </strong>{{ single_employee.manager }}</p>
       <p class="card-text">

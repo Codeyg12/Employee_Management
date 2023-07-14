@@ -13,11 +13,12 @@
         </tr>
     </thead>
     <tbody>
+      <!--MAKE WHOLE ROW CLICKABLE??-->
         {% if employees %}
         {% for employee in employees %}
         <tr>
           <th scope="row">
-        <a href="{% url 'employee' employee.id %}">
+        <a class="link-secondary text-decoration-none link-opacity-50-hover" href="{% url 'employee' employee.id %}">
         {{employee.id}}</a></th>
       
         <!--Put them in a card??-->
