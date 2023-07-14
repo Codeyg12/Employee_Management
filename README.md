@@ -6,3 +6,4 @@
 - authentication on views
 - unique ids
 - updating and deleting roles and departments
+-lohout on right side?

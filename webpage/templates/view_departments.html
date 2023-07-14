@@ -13,7 +13,7 @@
         {% for department in departments %}
         <tr>
         <!-- <td>{{department.id}}</td> -->
-        <td class="text-center">{{department.department_name}}</td>
+        <td class="text-center"><a class="link-secondary text-decoration-none link-opacity-50-hover" href="{% url 'department' department.id %}">{{department.department_name}}</a></td>
     </tr>
       {% endfor %}
     </tbody>

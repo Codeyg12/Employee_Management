@@ -89,4 +89,27 @@ def delete_employee(request, pk):
     delete_record = Employee.objects.get(id=pk)
     delete_record.delete()
     messages.success(request, 'Employee record deleted')
-    return redirect('home')
+    return redirect('view_employees')
+
+def department(request, pk):
+    single_department = Department.objects.get(id=pk)
+    return render(request, 'department.html', {'single_department': single_department})
+
+def delete_department(request, pk):
+    delete_record = Department.objects.get(id=pk)
+    delete_record.delete()
+    messages.success(request, 'Department successfully deleted')
+    return redirect('view_department')
+
+def update_department(request, pk):
+    if request.user.is_authenticated:
+        current_department = Department.objects.get(id=pk)
+        form = AddDepartmentForm(request.POST or None, instance=current_department)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Department updated')
+            return redirect('view_departments')
+        return render(request, 'update_department.html', {'form': form})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')

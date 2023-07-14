@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'view_employees' %}" class="btn btn-outline-light mb-3"><i class="fa-solid fa-arrow-left"></i></a>
+<div class="card">
+    <div class="card-header text-bold fs-1 text-center">
+        {{ single_department.department_name }}
+    </div>
+</div>
+<div class="float-end">
+    <a
+    href="{% url 'update_department' single_department.id %}"
+    class="btn btn-primary mt-3"
+    ><i class="fa-solid fa-pen"></i></a
+    >
+
+    <a href="{% url 'delete_department' single_department.id %}" class="btn btn-danger mt-3" 
+    ><i class="fa-solid fa-trash-can"></i></a
+    >
+</div>
+
+  
+  {% endblock %}
