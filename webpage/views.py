@@ -56,10 +56,12 @@ def view_employees(request):
     return render(request, 'view_employees.html', {'employees':employees})
 
 def view_departments(request):
-    return render(request, 'view_departments.html', {})
+    departments = Department.objects.all()
+    return render(request, 'view_departments.html', {'departments':departments})
 
 def view_roles(request):
-    return render(request, 'view_roles.html', {})
+    roles = Role.objects.all()
+    return render(request, 'view_roles.html', {'roles':roles})
 
 def view_budgets(request):
     return render(request, 'view_budgets.html', {})
