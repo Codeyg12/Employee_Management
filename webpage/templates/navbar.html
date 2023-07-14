@@ -15,26 +15,49 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'add' %}">Add</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">View</a>
-          </li>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  View
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">     
+                <li>
+                  <a class="dropdown-item" href="{% url 'view_departments' %}">View Departments</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'view_roles' %}">View Roles</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'view_employees' %}">View Employees</a>
+                </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Add
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">     
+                <li>
+                  <a class="dropdown-item" href="{% url 'add_department' %}">Add Department</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'add_role' %}">Add Role</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'add_employee' %}">Add Employee</a>
+                </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Login</a>
@@ -71,14 +94,23 @@
     <a class="nav-link" href="{% url 'home' %}">Delete Role</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{% url 'home' %}">View Departments</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'home' %}">View Roles</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{% url 'home' %}">View Employees</a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" href="{% url 'home' %}">View Budget</a>
+  </li> -->
+
+<!-- 
+  <li class="nav-item dropdown dropdown-menu-dark">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      View
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a class="dropdown-item" href="{% url 'home' %}">View Departments</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="{% url 'home' %}">View Roles</a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="{% url 'home' %}">View Employees</a>
+      </li>
+    </ul>
   </li> -->

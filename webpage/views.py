@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegisterForm
+from .models import Employee, Role, Department
 
 # Create your views here.
 def home(request):
@@ -51,7 +52,8 @@ def add_role(request):
     return render(request, 'add_role.html', {})
 
 def view_employees(request):
-    return render(request, 'view_employees.html', {})
+    employees = Employee.objects.all()
+    return render(request, 'view_employees.html', {'employees':employees})
 
 def view_departments(request):
     return render(request, 'view_departments.html', {})
