@@ -74,3 +74,9 @@ def logout_user(request):
 def employee(request, pk):
     single_employee = Employee.objects.get(id=pk)
     return render(request, 'employee.html', {'single_employee': single_employee})
+
+def delete_employee(request, pk):
+    delete_record = Employee.objects.get(id=pk)
+    delete_record.delete()
+    messages.success(request, 'Employee record deleted')
+    return redirect('home')
