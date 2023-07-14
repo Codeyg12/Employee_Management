@@ -70,3 +70,7 @@ def logout_user(request):
     logout(request)
     messages.success(request, 'You have been logged out')
     return redirect('home')
+
+def employee(request, pk):
+    single_employee = Employee.objects.get(id=pk)
+    return render(request, 'employee.html', {'single_employee': single_employee})

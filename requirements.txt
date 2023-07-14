@@ -1,0 +1,12 @@
+asgiref==3.7.2
+Django==4.2.3
+fontawesomefree==6.4.0
+livereload==2.6.3
+mysql==0.0.3
+mysql-connector-python==8.0.33
+mysqlclient==2.2.0
+protobuf==3.20.3
+six==1.16.0
+sqlparse==0.4.4
+tornado==6.3.2
+tzdata==2023.3
