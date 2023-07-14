@@ -1,3 +1,12 @@
 {% extends 'base.html' %} {% block content %}
-<h1>add Department</h1>
+
+<div class="col-md-6 offset-md-3">
+  <h1>Add Department</h1>
+
+  <form action="{% url 'add_department' %}" method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn btn-secondary">Add Department</button>
+  </form>
+</div>
+
 {% endblock %}

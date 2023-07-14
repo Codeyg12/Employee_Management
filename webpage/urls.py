@@ -13,6 +13,7 @@ urlpatterns = [
     path('view_roles', views.view_roles, name='view_roles'),
     path('view_budgets', views.view_budgets, name='view_budgets'),
     path('employee/<int:pk>', views.employee, name='employee'),
+    # path('update_employee/<int:pk>', views.update_employee, name='update_employee'),
     path('delete_employee/<int:pk>', views.delete_employee, name='delete_employee'),
     path('logout', views.logout_user, name='logout')
 ]

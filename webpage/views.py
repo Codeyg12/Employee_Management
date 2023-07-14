@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import RegisterForm
+from .forms import RegisterForm, AddDepartmentForm
 from .models import Employee, Role, Department
 
 # Create your views here.
@@ -46,7 +46,17 @@ def add_employee(request):
     return render(request, 'add_employee.html', {})
 
 def add_department(request):
-    return render(request, 'add_department.html', {})
+    form = AddDepartmentForm(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'New Department Added')
+                return redirect('view_departments')
+        return render(request, 'add_department.html', {'form':form})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')  
 
 def add_role(request):
     return render(request, 'add_role.html', {})
