@@ -99,7 +99,7 @@ def delete_department(request, pk):
     delete_record = Department.objects.get(id=pk)
     delete_record.delete()
     messages.success(request, 'Department successfully deleted')
-    return redirect('view_department')
+    return redirect('view_departments')
 
 def update_department(request, pk):
     if request.user.is_authenticated:
