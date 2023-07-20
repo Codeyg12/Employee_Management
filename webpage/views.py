@@ -96,10 +96,14 @@ def department(request, pk):
     return render(request, 'department.html', {'single_department': single_department})
 
 def delete_department(request, pk):
-    delete_record = Department.objects.get(id=pk)
-    delete_record.delete()
-    messages.success(request, 'Department successfully deleted')
-    return redirect('view_departments')
+    if request.user.is_authenticated:
+        delete_record = Department.objects.get(id=pk)
+        delete_record.delete()
+        messages.success(request, 'Department successfully deleted')
+        return redirect('view_departments')
+    else:
+        messages.error(request, 'You need to be logged in')
+        return redirect('home')
 
 def update_department(request, pk):
     if request.user.is_authenticated:

@@ -9,3 +9,4 @@
 - logout on right side?
 - view employees by department, maybe when viewing department can cclick on department name and will display all employees
 - link to add from the view table
+- Proper punctuation on all messages.error|success
