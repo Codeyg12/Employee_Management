@@ -13,7 +13,8 @@
         {% for role in roles %}
       <tr>
         <th scope="row"><a class="link-secondary text-decoration-none link-opacity-50-hover" href="{% url 'role' role.id %}">{{role.title}}</a></th>
-        <td>{{role.salary}}</td>
+        {% load my_filters %}
+        <td>{{role.salary | currency}}</td>
         <td>{{role.role_department}}</td>
       </tr>
       {% endfor %}

@@ -19,7 +19,7 @@ urlpatterns = [
     path('update_department/<int:pk>', views.update_department, name='update_department'),
     path('delete_department/<int:pk>', views.delete_department, name='delete_department'),
     path('role/<int:pk>', views.role, name='role'),
-    # path('update_role/<int:pk>', views.update_role, name='update_role'),
+    path('update_role/<int:pk>', views.update_role, name='update_role'),
     path('delete_role/<int:pk>', views.delete_role, name='delete_role'),
     path('logout', views.logout_user, name='logout')
 ]

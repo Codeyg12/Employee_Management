@@ -142,18 +142,18 @@ def delete_role(request, pk):
         messages.error(request, 'You need to be logged in')
         return redirect('home')
     
-# def update_role(request, pk):
-#     if request.user.is_authenticated:
-#         current_role = Role.objects.get(id=pk)
-#         form = AddRoleForm(request.POST or None, instance=current_role)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Role updated')
-#             return redirect('view_roles')
-#         return render(request, 'update_role.html', {'form': form})
-#     else:
-#         messages.error(request, 'You need to be logged in')
-#         return redirect('home')
+def update_role(request, pk):
+    if request.user.is_authenticated:
+        current_role = Role.objects.get(id=pk)
+        form = AddRoleForm(request.POST or None, instance=current_role)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Role updated')
+            return redirect('view_roles')
+        return render(request, 'update_role.html', {'form': form})
+    else:
+        messages.error(request, 'You need to be logged in')
+        return redirect('home')
     
 # def update_employee(request, pk):
 #     if request.user.is_authenticated:
