@@ -11,3 +11,5 @@
 - link to add from the view table
 - Proper punctuation on all messages.error|success
 - logout after set time
+- changing sorting of employees
+- adding button on view tables
