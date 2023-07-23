@@ -13,3 +13,4 @@
 - logout after set time
 - changing sorting of employees
 - adding button on view tables
+- forms, select from models muted text issue

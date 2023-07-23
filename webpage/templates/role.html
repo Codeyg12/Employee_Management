@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'view_roles' %}" class="btn btn-outline-light mb-3"><i class="fa-solid fa-arrow-left"></i></a>
+<div class="card">
+    <div class="card-header text-bold fs-1">
+        {{ single_role.title }}
+    </div>
+    <div class="card-body fs-5">
+        <p class="card-text"><strong>Department: </strong>{{ single_role.role_department }}</p>
+        <p class="card-text">
+          {% load my_filters %}
+        <strong>Salary: </strong>{{ single_role.salary | currency }}
+      </p>
+    </div>
+</div>
+<div class="float-end">
+    <a
+    href="{% url 'home' %}"
+    class="btn btn-primary mt-3"
+    ><i class="fa-solid fa-pen"></i></a
+    >
+
+    <a href="{% url 'delete_role' single_role.id %}" class="btn btn-danger mt-3" 
+    ><i class="fa-solid fa-trash-can"></i></a
+    >
+</div>
+
+  
+  {% endblock %}

@@ -40,7 +40,7 @@ class AddDepartmentForm(forms.ModelForm):
 class AddRoleForm(forms.ModelForm):
     title = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Title', 'class': 'form-control'}), label='')
     salary = forms.IntegerField(required=True, widget=forms.widgets.NumberInput(attrs={'placeholder': 'Salary', 'class': 'form-control'}), label='')
-    role_department = forms.ModelChoiceField(queryset=Department.objects.all(), required=True, widget=forms.widgets.Select(attrs={'class': 'form-control'}), empty_label='Select Department Name', label='')
+    role_department = forms.ModelChoiceField(queryset=Department.objects.all(), required=True, widget=forms.widgets.Select(attrs={'class': 'form-control text-muted'}), empty_label='Select Department Name', label='')
 
     class Meta:
         model = Role

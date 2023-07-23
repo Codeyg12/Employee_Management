@@ -128,19 +128,19 @@ def update_department(request, pk):
         messages.error(request, 'You must be logged in')
         return redirect('home')
     
-# def role(request, pk):
-#     single_role = Role.objects.get(id=pk)
-#     return render(request, 'role.html', {'single_role': single_role})
+def role(request, pk):
+    single_role = Role.objects.get(id=pk)
+    return render(request, 'role.html', {'single_role': single_role})
 
-# def delete_role(request, pk):
-#     if request.user.is_authenticated:
-#         delete_role = Role.objects.get(id=pk)
-#         delete_role.delete()
-#         messages.success(request, 'Role has been deleted')
-#         return redirect('view_roles')
-#     else:
-#         messages.error(request, 'You need to be logged in')
-#         return redirect('home')
+def delete_role(request, pk):
+    if request.user.is_authenticated:
+        delete_role = Role.objects.get(id=pk)
+        delete_role.delete()
+        messages.success(request, 'Role has been deleted')
+        return redirect('view_roles')
+    else:
+        messages.error(request, 'You need to be logged in')
+        return redirect('home')
     
 # def update_role(request, pk):
 #     if request.user.is_authenticated:

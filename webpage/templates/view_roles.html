@@ -12,7 +12,7 @@
         {% if roles %}
         {% for role in roles %}
       <tr>
-        <th scope="row">{{role.title}}</th>
+        <th scope="row"><a class="link-secondary text-decoration-none link-opacity-50-hover" href="{% url 'role' role.id %}">{{role.title}}</a></th>
         <td>{{role.salary}}</td>
         <td>{{role.role_department}}</td>
       </tr>
