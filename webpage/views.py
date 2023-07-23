@@ -117,3 +117,43 @@ def update_department(request, pk):
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
+    
+# def role(request, pk):
+#     single_role = Role.objects.get(id=pk)
+#     return render(request, 'role.html', {'single_role': single_role})
+
+# def delete_role(request, pk):
+#     if request.user.is_authenticated:
+#         delete_role = Role.objects.get(id=pk)
+#         delete_role.delete()
+#         messages.success(request, 'Role has been deleted')
+#         return redirect('view_roles')
+#     else:
+#         messages.error(request, 'You need to be logged in')
+#         return redirect('home')
+    
+# def update_role(request, pk):
+#     if request.user.is_authenticated:
+#         current_role = Role.objects.get(id=pk)
+#         form = AddRoleForm(request.POST or None, instance=current_role)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Role updated')
+#             return redirect('view_roles')
+#         return render(request, 'update_role.html', {'form': form})
+#     else:
+#         messages.error(request, 'You need to be logged in')
+#         return redirect('home')
+    
+# def update_employee(request, pk):
+#     if request.user.is_authenticated:
+#         current_employee = Employee.objects.get(id=pk)
+#         form = AddEmployeeForm(request.POST or None, instance=current_employee)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Employee updated')
+#             return redirect('view_employees')
+#         return render(request, 'update_employee.html', {'form': form})
+#     else:
+#         messages.error(request, 'You must be logged in')
+#         return redirect('home')
