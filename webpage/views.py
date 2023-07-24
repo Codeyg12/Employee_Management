@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import RegisterForm, AddDepartmentForm, AddRoleForm
+from .forms import RegisterForm, AddDepartmentForm, AddRoleForm, AddEmployeeForm
 from .models import Employee, Role, Department
 
 # Create your views here.
@@ -43,7 +43,17 @@ def add(request):
     return render(request, 'add.html', {})
 
 def add_employee(request):
-    return render(request, 'add_employee.html', {})
+    form = AddEmployeeForm(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'New Employee Added')
+                return redirect('view_employees')
+        return render(request, 'add_employee.html', {'form': form})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')
 
 def add_department(request):
     form = AddDepartmentForm(request.POST or None)
@@ -155,15 +165,15 @@ def update_role(request, pk):
         messages.error(request, 'You need to be logged in')
         return redirect('home')
     
-# def update_employee(request, pk):
-#     if request.user.is_authenticated:
-#         current_employee = Employee.objects.get(id=pk)
-#         form = AddEmployeeForm(request.POST or None, instance=current_employee)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Employee updated')
-#             return redirect('view_employees')
-#         return render(request, 'update_employee.html', {'form': form})
-#     else:
-#         messages.error(request, 'You must be logged in')
-#         return redirect('home')
+def update_employee(request, pk):
+    if request.user.is_authenticated:
+        current_employee = Employee.objects.get(id=pk)
+        form = AddEmployeeForm(request.POST or None, instance=current_employee)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Employee updated')
+            return redirect('view_employees')
+        return render(request, 'update_employee.html', {'form': form})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')

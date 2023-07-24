@@ -45,3 +45,14 @@ class AddRoleForm(forms.ModelForm):
     class Meta:
         model = Role
         exclude = ('user',)
+
+class AddEmployeeForm(forms.ModelForm):
+    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'}), label='')
+    last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control'}), label='')
+    employee_role = forms.ModelChoiceField(queryset=Role.objects.all(), required=True, widget=forms.widgets.Select(attrs={'class': 'form-control'}), empty_label='Select Employees Role', label='')
+    employee_department =  forms.ModelChoiceField(queryset=Department.objects.all(), required=True, widget=forms.widgets.Select(attrs={'class': 'form-control'}), empty_label='Select Employees Department', label='')
+    manager = forms.ModelChoiceField(queryset=Employee.objects.all(), required=False, widget=forms.widgets.Select(attrs={'class': 'form-control'}), empty_label='Select Employees Manager', label='')
+
+    class Meta:
+        model = Employee
+        exclude = ('user',)

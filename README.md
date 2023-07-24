@@ -14,3 +14,5 @@
 - changing sorting of employees
 - adding button on view tables
 - forms, select from models muted text issue
+- DRY OUT THIS CODE
+- When selecting role for new employee it auto adds department
