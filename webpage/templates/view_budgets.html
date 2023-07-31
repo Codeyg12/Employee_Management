@@ -1,3 +1,15 @@
 {% extends 'base.html' %} {% block content %}
-<h1>view budgets</h1>
+<h1 class="text-center">view budgets</h1>
+<div class="dropdown show">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select a Department
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      {% if options %}
+      {% for department in options %}
+      <a class="dropdown-item" href="#">{{department}}</a>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}

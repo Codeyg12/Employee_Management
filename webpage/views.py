@@ -94,7 +94,8 @@ def view_roles(request):
     return render(request, 'view_roles.html', {'roles':roles})
 
 def view_budgets(request):
-    return render(request, 'view_budgets.html', {})
+    options = Department.objects.all()
+    return render(request, 'view_budgets.html', {'options': options})
 
 def logout_user(request):
     logout(request)
