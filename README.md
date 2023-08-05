@@ -16,3 +16,4 @@
 - forms, select from models muted text issue
 - DRY OUT THIS CODE
 - When selecting role for new employee it auto adds department
+- Change error page for user attemps I.E. user types in '/budget/112'

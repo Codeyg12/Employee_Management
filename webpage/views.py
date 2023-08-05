@@ -178,3 +178,12 @@ def update_employee(request, pk):
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
+
+def budget(request, pk):
+    if request.user.is_authenticated:
+        department = Department.objects.get(id=pk)
+        return render(request, 'budget.html', {'department': department})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')
+    
