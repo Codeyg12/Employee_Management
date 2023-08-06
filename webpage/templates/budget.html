@@ -1,7 +1,19 @@
 {% extends 'base.html' %} {% block content %}
-{% if department %}
-<h1 class="text-center">view budget for {{department}}</h1>
-{% endif %}
-{% load my_filters %}
-<h2>The total annual salary for {{department}} is {{total | currency}}</h2>
+<div class="text-center">    
+    {% if department %}
+    <h1>view budget for {{department}}</h1>
+    {% endif %}
+    {% load my_filters %}
+    <h2>The total annual salary for {{department}} is {{total | currency}}</h2>
+    <h3>The individual cost for each role in {{department}} is:</h3>
+    {% if roles %}
+    {% for role in roles %}
+    {% ifchanged role.title %}
+    <h3>{{role.title}} is {{role.salary | currency}}</h3>
+    {% else %}
+    <h3>{{role.title}} is {{role.salary|add:role.salary|add:role.salary | currency}}</h3>
+    {% endifchanged %}
+    {% endfor %}
+    {% endif %}
+</div>
 {% endblock %}

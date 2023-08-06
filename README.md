@@ -17,3 +17,4 @@
 - DRY OUT THIS CODE
 - When selecting role for new employee it auto adds department
 - Change error page for user attemps I.E. user types in '/budget/112'
+- Either change budgets to be on view_departments or figure out how to add in views
