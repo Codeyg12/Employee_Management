@@ -2,4 +2,6 @@
 {% if department %}
 <h1 class="text-center">view budget for {{department}}</h1>
 {% endif %}
+{% load my_filters %}
+<h2>The total annual salary for {{department}} is {{total | currency}}</h2>
 {% endblock %}

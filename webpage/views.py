@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.db.models import Sum
 from .forms import RegisterForm, AddDepartmentForm, AddRoleForm, AddEmployeeForm
 from .models import Employee, Role, Department
 
@@ -182,7 +183,12 @@ def update_employee(request, pk):
 def budget(request, pk):
     if request.user.is_authenticated:
         department = Department.objects.get(id=pk)
-        return render(request, 'budget.html', {'department': department})
+        employees = Employee.objects.filter(employee_department=department)
+        total = 0
+        for employee in employees:
+            total += employee.employee_role.salary
+        print(total)
+        return render(request, 'budget.html', {'department': department, 'total': total})
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
