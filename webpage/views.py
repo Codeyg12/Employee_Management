@@ -83,16 +83,28 @@ def add_role(request):
         return redirect('home')
 
 def view_employees(request):
-    employees = Employee.objects.all()
-    return render(request, 'view_employees.html', {'employees':employees})
+    if request.user.is_authenticated:
+        employees = Employee.objects.all()
+        return render(request, 'view_employees.html', {'employees':employees})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')
 
 def view_departments(request):
-    departments = Department.objects.all()
-    return render(request, 'view_departments.html', {'departments':departments})
+    if request.user.is_authenticated:
+        departments = Department.objects.all()
+        return render(request, 'view_departments.html', {'departments':departments})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')
 
 def view_roles(request):
-    roles = Role.objects.all()
-    return render(request, 'view_roles.html', {'roles':roles})
+    if request.user.is_authenticated:
+        roles = Role.objects.all()
+        return render(request, 'view_roles.html', {'roles':roles})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')
 
 def view_budgets(request):
     options = Department.objects.all()
