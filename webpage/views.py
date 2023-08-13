@@ -200,15 +200,10 @@ def budget(request, pk):
     if request.user.is_authenticated:
         department = Department.objects.get(id=pk)
         employees = Employee.objects.filter(employee_department=department)
-        all_roles = Role.objects.filter(role_department=department)
-        # print(f'ALL {all_roles}')
-        roles = {}
-        # for role in all_roles:
-        #     single_role = {'title': role.title, 'salary': role.salary}
-        #     print(single_role)
-        #     roles.append(single_role)
 
+        roles = {}
         total = 0
+
         for employee in employees:
             total += employee.employee_role.salary
             position = employee.employee_role
@@ -220,18 +215,9 @@ def budget(request, pk):
             else:
                 roles[position] = {'count': 1, 'total_salary': salary}
 
-        print(roles)
+            # context = {'department': department, 'total': total, 'roles': roles, 'employees': employees}
+            # plug context into render?
 
-        # total = 0
-        # for employee in employees:
-        #     roles.append(employee.employee_role)
-        #     total += employee.employee_role.salary
- 
-        # for role in roles:
-        #     if role in roles:
-        #         print(role)
-            # print(role, role.salary)
-        # print(roles)
         return render(request, 'budget.html', {'department': department, 'total': total, 'roles': roles, 'employees': employees})
     else:
         messages.error(request, 'You must be logged in')

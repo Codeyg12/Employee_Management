@@ -7,15 +7,13 @@
     <h2>The total annual salary for {{department}} is {{total | currency}}</h2>
     <h3>The individual cost for each role in {{department}} is:</h3>
     {% if roles %}
-    {% for role in roles %}
- 
-  
-    {% endfor %}
-    {% endif %}
 
     {% for position, data in roles.items %}
-    <h3>{{position}}s with {{data.count}} a total cost of {{data.total_salary}} </h3>
+    <h3>{{data.count}} {{position}}{{data.count|pluralize}} with a total cost of {{data.total_salary | currency}} </h3>
     {% endfor %}
+
+    {% endif %}
+
 
 </div>
 {% endblock %}
