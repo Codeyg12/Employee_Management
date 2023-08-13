@@ -8,12 +8,14 @@
     <h3>The individual cost for each role in {{department}} is:</h3>
     {% if roles %}
     {% for role in roles %}
-    {% ifchanged role.title %}
-    <h3>{{role.title}} is {{role.salary | currency}}</h3>
-    {% else %}
-    <h3>{{role.title}} is {{role.salary|add:role.salary|add:role.salary | currency}}</h3>
-    {% endifchanged %}
+ 
+  
     {% endfor %}
     {% endif %}
+
+    {% for position, data in roles.items %}
+    <h3>{{position}}s with {{data.count}} a total cost of {{data.total_salary}} </h3>
+    {% endfor %}
+
 </div>
 {% endblock %}

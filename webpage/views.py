@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.db.models import Sum
+from collections import Counter
 from .forms import RegisterForm, AddDepartmentForm, AddRoleForm, AddEmployeeForm
 from .models import Employee, Role, Department
 
@@ -107,8 +107,12 @@ def view_roles(request):
         return redirect('home')
 
 def view_budgets(request):
-    options = Department.objects.all()
-    return render(request, 'view_budgets.html', {'options': options})
+    if request.user.is_authenticated:
+        options = Department.objects.all()
+        return render(request, 'view_budgets.html', {'options': options})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')
 
 def logout_user(request):
     logout(request)
@@ -197,8 +201,8 @@ def budget(request, pk):
         department = Department.objects.get(id=pk)
         employees = Employee.objects.filter(employee_department=department)
         all_roles = Role.objects.filter(role_department=department)
-        print(f'ALL {all_roles}')
-        roles = []
+        # print(f'ALL {all_roles}')
+        roles = {}
         # for role in all_roles:
         #     single_role = {'title': role.title, 'salary': role.salary}
         #     print(single_role)
@@ -206,12 +210,29 @@ def budget(request, pk):
 
         total = 0
         for employee in employees:
-            roles.append(employee.employee_role)
             total += employee.employee_role.salary
-        for role in roles:
-            print(role, role.salary)
+            position = employee.employee_role
+            salary = employee.employee_role.salary
+
+            if position in roles:
+                roles[position]['total_salary'] += salary
+                roles[position]['count'] += 1
+            else:
+                roles[position] = {'count': 1, 'total_salary': salary}
+
         print(roles)
-        return render(request, 'budget.html', {'department': department, 'total': total, 'roles': roles})
+
+        # total = 0
+        # for employee in employees:
+        #     roles.append(employee.employee_role)
+        #     total += employee.employee_role.salary
+ 
+        # for role in roles:
+        #     if role in roles:
+        #         print(role)
+            # print(role, role.salary)
+        # print(roles)
+        return render(request, 'budget.html', {'department': department, 'total': total, 'roles': roles, 'employees': employees})
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
