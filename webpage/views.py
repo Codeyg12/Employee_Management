@@ -120,19 +120,31 @@ def logout_user(request):
     return redirect('home')
 
 def employee(request, pk):
-    single_employee = Employee.objects.get(id=pk)
-    return render(request, 'employee.html', {'single_employee': single_employee})
+    if request.user.is_authenticated:
+        single_employee = Employee.objects.get(id=pk)
+        return render(request, 'employee.html', {'single_employee': single_employee})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')
 
 def delete_employee(request, pk):
-    delete_record = Employee.objects.get(id=pk)
-    delete_record.delete()
-    messages.success(request, 'Employee record deleted')
-    return redirect('view_employees')
-
+    if request.user.is_authenticated:
+        delete_record = Employee.objects.get(id=pk)
+        delete_record.delete()
+        messages.success(request, 'Employee record deleted')
+        return redirect('view_employees')
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')
+    
 def department(request, pk):
-    single_department = Department.objects.get(id=pk)
-    return render(request, 'department.html', {'single_department': single_department})
-
+    if request.user.is_authenticated:
+        single_department = Department.objects.get(id=pk)
+        return render(request, 'department.html', {'single_department': single_department})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')
+    
 def delete_department(request, pk):
     if request.user.is_authenticated:
         delete_record = Department.objects.get(id=pk)
@@ -157,8 +169,12 @@ def update_department(request, pk):
         return redirect('home')
     
 def role(request, pk):
-    single_role = Role.objects.get(id=pk)
-    return render(request, 'role.html', {'single_role': single_role})
+    if request.user.is_authenticated:
+        single_role = Role.objects.get(id=pk)
+        return render(request, 'role.html', {'single_role': single_role})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')
 
 def delete_role(request, pk):
     if request.user.is_authenticated:
