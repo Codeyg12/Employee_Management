@@ -1,18 +1,22 @@
 {% extends 'base.html' %} {% block content %}
-<div class="text-center">    
-    {% if department %}
-    <h1>view budget for {{department}}</h1>
-    {% endif %}
-    {% load my_filters %}
-    <h2>The total annual salary for {{department}} is {{total | currency}}</h2>
-    <h3>The individual cost for each role in {{department}} is:</h3>
-    {% if roles %}
-
-    {% for position, data in roles.items %}
-    <h3>{{data.count}} {{position}}{{data.count|pluralize}} with a total cost of {{data.total_salary | currency}} </h3>
-    {% endfor %}
-
-    {% endif %}
+<a href="{% url 'view_budgets' %}" class="btn btn-outline-light mb-3"><i class="fa-solid fa-arrow-left"></i></a>
+    <div class="card text-center">
+        {% load my_filters %}
+        {% if department %}
+        <div class="card-header">
+            <h1>Budget for {{department}}</h1>
+        </div>
+        {% endif %}
+        <div class="card-body">
+          <h2 class="card-title">The total annual salary for {{department}} is {{total | currency}}</h2>
+          <h4 class="card-text">The individual cost for each role in {{department}} is:</h4>
+        </div>
+        {% if roles %}
+        {% for position, data in roles.items %}
+        <h3>{{data.count}} {{position}}{{data.count|pluralize}} with a total cost of {{data.total_salary | currency}} </h3>
+        {% endfor %}
+        {% endif %}
+      </div>
 
 
 </div>
