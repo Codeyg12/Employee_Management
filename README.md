@@ -3,10 +3,8 @@
 - set up database for live page, both in employee_manag - settings.py and mydb
 - Make entire row clickable on employeee table
 - size issue on mobile
-- authentication on views
 - unique ids
-- updating and deleting roles and departments
-- logout on right side?
+- confirmation of deleting all (are you sure you want to delete?)
 - view employees by department, maybe when viewing department can cclick on department name and will display all employees
 - link to add from the view table
 - Proper punctuation on all messages.error|success
@@ -19,3 +17,4 @@
 - Change error page for user attemps I.E. user types in '/budget/112'
 - Either change budgets to be on view_departments or figure out how to add in views
 - On budget maybe break down each employee??
+- (not registered?)
