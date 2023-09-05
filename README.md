@@ -10,7 +10,6 @@
 - Proper punctuation on all messages.error|success
 - logout after set time
 - changing sorting of employees
-- adding button on view tables
 - forms, select from models muted text issue
 - DRY OUT THIS CODE
 - When selecting role for new employee it auto adds department
@@ -18,3 +17,4 @@
 - Either change budgets to be on view_departments or figure out how to add in views
 - On budget maybe break down each employee??
 - (not registered?) 
+- scroll groups for too many enteries on table (i.e. the employee table, which is long)

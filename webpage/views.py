@@ -152,7 +152,7 @@ def delete_department(request, pk):
         messages.success(request, 'Department successfully deleted')
         return redirect('view_departments')
     else:
-        messages.error(request, 'You need to be logged in')
+        messages.error(request, 'You must be logged in')
         return redirect('home')
 
 def update_department(request, pk):
@@ -183,7 +183,7 @@ def delete_role(request, pk):
         messages.success(request, 'Role has been deleted')
         return redirect('view_roles')
     else:
-        messages.error(request, 'You need to be logged in')
+        messages.error(request, 'You must be logged in')
         return redirect('home')
     
 def update_role(request, pk):
@@ -196,7 +196,7 @@ def update_role(request, pk):
             return redirect('view_roles')
         return render(request, 'update_role.html', {'form': form})
     else:
-        messages.error(request, 'You need to be logged in')
+        messages.error(request, 'You must be logged in')
         return redirect('home')
     
 def update_employee(request, pk):
