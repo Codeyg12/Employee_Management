@@ -52,10 +52,11 @@
     ></script>
     <script>
           let messageEl = document.getElementById('alert-message')
-
-          setTimeout(() => {
-            messageEl.style.display = 'none';
-          }, 3000)
+          if (messageEl) {
+            setTimeout(() => {
+              messageEl.style.display = 'none';
+            }, 3000)
+          }
     </script>
   </body>
 </html>

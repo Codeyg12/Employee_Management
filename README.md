@@ -6,7 +6,6 @@
 - unique ids (https://stackoverflow.com/questions/16925129/generate-unique-id-in-django-from-a-model-field)
 - confirmation of deleting all (are you sure you want to delete?) (https://stackoverflow.com/questions/37398416/django-delete-confirmation)
 - view employees by department, maybe when viewing department can cclick on department name and will display all employees
-- logout after set time (https://docs.djangoproject.com/en/4.2/topics/http/sessions/) (https://stackoverflow.com/questions/14830669/how-to-expire-django-session-in-5minutes)
 - changing sorting of employees
 - forms, select from models muted text issue
 - DRY OUT THIS CODE
