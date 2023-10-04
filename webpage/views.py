@@ -4,6 +4,7 @@ from django.contrib import messages
 from collections import Counter
 from .forms import RegisterForm, AddDepartmentForm, AddRoleForm, AddEmployeeForm
 from .models import Employee, Role, Department
+import random
 
 # Create your views here.
 def home(request):
