@@ -85,7 +85,7 @@ def add_role(request):
 
 def view_employees(request):
     if request.user.is_authenticated:
-        employees = Employee.objects.all()
+        employees = Employee.objects.all().order_by('?')
         return render(request, 'view_employees.html', {'employees':employees})
     else:
         messages.error(request, 'You must be logged in')
