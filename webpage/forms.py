@@ -31,14 +31,14 @@ class RegisterForm(UserCreationForm):
 
         
 class AddDepartmentForm(forms.ModelForm):
-    department_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Department Name', "class": 'form-control'}), label='')
+    department_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Department Name', "class": 'form-control', 'autofocus': True}), label='')
 
     class Meta:
         model = Department
         exclude = ('user',)
 
 class AddRoleForm(forms.ModelForm):
-    title = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Title', 'class': 'form-control'}), label='')
+    title = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Title', 'class': 'form-control', 'autofocus': True}), label='')
     salary = forms.IntegerField(required=True, widget=forms.widgets.NumberInput(attrs={'placeholder': 'Salary', 'class': 'form-control'}), label='')
     role_department = forms.ModelChoiceField(queryset=Department.objects.all(), required=True, widget=forms.widgets.Select(attrs={'class': 'form-control text-muted'}), empty_label='Select Department Name', label='')
 
@@ -47,7 +47,7 @@ class AddRoleForm(forms.ModelForm):
         exclude = ('user',)
 
 class AddEmployeeForm(forms.ModelForm):
-    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'}), label='')
+    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control', 'autofocus': True}), label='')
     last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control'}), label='')
     employee_role = forms.ModelChoiceField(queryset=Role.objects.all(), required=True, widget=forms.widgets.Select(attrs={'class': 'form-control'}), empty_label='Select Employees Role', label='')
     employee_department =  forms.ModelChoiceField(queryset=Department.objects.all(), required=True, widget=forms.widgets.Select(attrs={'class': 'form-control'}), empty_label='Select Employees Department', label='')
