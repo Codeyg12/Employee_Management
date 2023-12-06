@@ -12,3 +12,4 @@
 - (not registered?) 
 - scroll groups for too many enteries on table (i.e. the employee table, which is long)
 -https://code.djangoproject.com/ticket/27562  https://stackoverflow.com/questions/16925129/generate-unique-id-in-django-from-a-model-field
+ 
