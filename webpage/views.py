@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from collections import Counter
 from .forms import RegisterForm, AddDepartmentForm, AddRoleForm, AddEmployeeForm
 from .models import Employee, Role, Department
@@ -85,7 +86,17 @@ def add_role(request):
 
 def view_employees(request):
     if request.user.is_authenticated:
-        employees = Employee.objects.all()
+        all_employees = Employee.objects.all()
+        employees_per_page = 10
+        paginator = Paginator(all_employees, employees_per_page)
+        page = request.GET.get('page')
+
+        try: 
+            employees = paginator.page(page)
+        except PageNotAnInteger:
+            employees = paginator.page(1)
+        except EmptyPage:
+            employees = paginator.page(paginator.num_pages)
         return render(request, 'view_employees.html', {'employees':employees})
     else:
         messages.error(request, 'You must be logged in')
