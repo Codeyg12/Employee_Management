@@ -6,7 +6,8 @@
         {{ single_department.department_name }}
     </div>
 </div>
-<div class="float-end">
+    <a href="{% url 'budget' single_department.id %}" class="btn btn-dark mt-3">View Budget</a>
+    <div class="float-end">
     <a
     href="{% url 'update_department' single_department.id %}"
     class="btn btn-primary mt-3"
