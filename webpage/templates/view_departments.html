@@ -11,7 +11,7 @@
     <tbody>
         {% if departments %}
         {% for department in departments %}
-        <tr>
+        <tr class="clickable" onclick="location.href=`{% url 'department' department.id %}`" style="cursor: pointer;">
         <!-- <td>{{department.id}}</td> -->
         <td class="text-center"><a class="link-secondary text-decoration-none link-opacity-50-hover" href="{% url 'department' department.id %}">{{department.department_name}}</a></td>
     </tr>
