@@ -6,5 +6,5 @@
 - DRY OUT THIS CODE
 - view employees by department, maybe when viewing department can cclick on department name and will display all employees
 - When selecting role for new employee it auto adds department
-- Change error page for user attemps I.E. user types in '/budget/112'
+- Change error page for user attemps I.E. user types in '/budget/112', custom 404 page
 - From departments add a 'View Employees' btn for all employees in department
