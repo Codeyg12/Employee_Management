@@ -8,3 +8,4 @@
 - When selecting role for new employee it auto adds department
 - Change error page for user attemps I.E. user types in '/budget/112', custom 404 page
 - From departments add a 'View Employees' btn for all employees in department
+- font awesome icons, do I keep the 'fa-sm' or do I want to make it large?
