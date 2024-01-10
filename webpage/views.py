@@ -251,3 +251,11 @@ def budget(request, pk):
         messages.error(request, 'You must be logged in')
         return redirect('home')
     
+def department_employees(request, pk):
+    if request.user.is_authenticated:
+        department = Department.objects.get(id=pk)
+        employees = Employee.objects.filter(employee_department=department)
+        return render(request, 'department_employees.html', {'department': department, 'employees': employees})
+    else:
+        messages.error(request, 'You must be logged in')
+        return redirect('home')

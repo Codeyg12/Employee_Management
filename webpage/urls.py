@@ -22,5 +22,6 @@ urlpatterns = [
     path('update_role/<int:pk>', views.update_role, name='update_role'),
     path('delete_role/<int:pk>', views.delete_role, name='delete_role'),
     path('budget/<int:pk>', views.budget, name='budget'),
+    path('department_employees/<int:pk>', views.department_employees, name='department_employees'),
     path('logout', views.logout_user, name='logout')
 ]
