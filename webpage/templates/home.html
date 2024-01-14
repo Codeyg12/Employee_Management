@@ -1,15 +1,49 @@
-{% extends 'base.html' %} {% block content %}
-{% if user.is_authenticated %}
-<div class="card text-center bg-transparent mx-auto mt-3">
-    <h1 class="display-1">
-        What would you like to do?
-    </h1>
-    <!-- <div class="dropdown show" id="viewDropdown">
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<div class="d-flex align-items-center justify-content-center flex-column text-center text-white bg-transparent h-75">
+  <h1 class="display-1">What would you like to do?</h1>
+
+  <ul class="list-group container">
+    <li class="list-group-item fs-2 bg-transparent border-0">
+      <div class="row">
+        <p class="col text-white">
+          Employee
+        </p>
+        <div class="btn-group col" role="group">
+          <a type="button" class="btn btn-primary fs-2 mx-2">View</a>
+          <a type="button" class="btn btn-primary fs-2 mx-2">Add</a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item fs-2 bg-transparent border-0">
+      <div class="row">
+        <p class="col text-white">
+          Role
+        </p>
+        <div class="btn-group col" role="group">
+          <a type="button" class="btn btn-primary fs-2 mx-2">View</a>
+          <a type="button" class="btn btn-primary fs-2 mx-2">Add</a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item fs-2 bg-transparent border-0">
+      <div class="row">
+        <p class="col text-white">
+          Department
+        </p>
+        <div class="btn-group col" role="group">
+          <a type="button" class="btn btn-primary fs-2 mx-2">View</a>
+          <a type="button" class="btn btn-primary fs-2 mx-2">Add</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- <div class="dropdown show" id="viewDropdown">
       <a class="btn btn-secondary" id="viewDropdownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <p class="display-3">View &nbsp; <i class="fas fa-caret-down"></i></p>
       </a>
   
-      <div class="dropdown-menu position-static" aria-labelledby="viewDropdownLink">
+      <div class="dropdown-menu fixed-top" aria-labelledby="viewDropdownLink">
         <a class="dropdown-item" href="#">View Action 1</a>
         <a class="dropdown-item" href="#">View Action 2</a>
         <a class="dropdown-item" href="#">View Action 3</a>
@@ -28,7 +62,7 @@
       </div>
     </div> -->
 
-    <ul class="list-group list-group-flush fs-4">
+  <!-- <ul class="list-group list-group-flush fs-4">
         <li class="list-group-item py-3">
             <a
               href="{% url 'view_employees' %}"
@@ -57,36 +91,35 @@
               >View Budgets</a
             >
           </li>
-    </ul>
+    </ul> -->
 </div>
 {% else %}
 <div class="col-md-6 offset-md-3">
-    <h1 class="text-center">Login</h1>
-    <br />
-  
-    <form action="{% url 'home' %}" method="POST">
-      {% csrf_token %}
-      <div class="mb-3">
-        <input
-          type="text"
-          class="form-control"
-          name="username"
-          placeholder="Username"
-          autofocus
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <input
-          type="password"
-          class="form-control"
-          name="password"
-          placeholder="Password"
-          required
-        />
-      </div>
-      <button type="submit" class="btn btn-outline-light float-end">Login</button>
-    </form>
-  </div>
-  {% endif %}
-{% endblock %}
+  <h1 class="text-center">Login</h1>
+  <br />
+
+  <form action="{% url 'home' %}" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        placeholder="Username"
+        autofocus
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        placeholder="Password"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-outline-light float-end">Login</button>
+  </form>
+</div>
+{% endif %} {% endblock %}
