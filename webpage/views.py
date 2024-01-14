@@ -152,7 +152,12 @@ def delete_employee(request, pk):
 def department(request, pk):
     if request.user.is_authenticated:
         single_department = Department.objects.get(id=pk)
-        return render(request, 'department.html', {'single_department': single_department})
+        employees = Employee.objects.filter(employee_department=single_department)
+        total = 0
+
+        for employee in employees:
+            total += employee.employee_role.salary
+        return render(request, 'department.html', {'single_department': single_department, 'employees': employees, 'total': total})
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
