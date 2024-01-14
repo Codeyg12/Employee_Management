@@ -1,9 +1,33 @@
 {% extends 'base.html' %} {% block content %}
 {% if user.is_authenticated %}
-<div class="card text-center text-bg-info mx-auto mt-3">
-    <div class="card-header fs-2 table-dark">
-        What would you like to view?
+<div class="card text-center bg-transparent mx-auto mt-3">
+    <h1 class="display-1">
+        What would you like to do?
+    </h1>
+    <!-- <div class="dropdown show" id="viewDropdown">
+      <a class="btn btn-secondary" id="viewDropdownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <p class="display-3">View &nbsp; <i class="fas fa-caret-down"></i></p>
+      </a>
+  
+      <div class="dropdown-menu position-static" aria-labelledby="viewDropdownLink">
+        <a class="dropdown-item" href="#">View Action 1</a>
+        <a class="dropdown-item" href="#">View Action 2</a>
+        <a class="dropdown-item" href="#">View Action 3</a>
+      </div>
     </div>
+  
+    <div class="dropdown show" id="addDropdown">
+      <a class="btn btn-secondary" href="#" role="button" id="addDropdownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <p class="display-3">Add &nbsp; <i class="fas fa-caret-down"></i></p>
+      </a>
+  
+      <div class="dropdown-menu" aria-labelledby="addDropdownLink">
+        <a class="dropdown-item" href="#">Add Action 1</a>
+        <a class="dropdown-item" href="#">Add Action 2</a>
+        <a class="dropdown-item" href="#">Add Action 3</a>
+      </div>
+    </div> -->
+
     <ul class="list-group list-group-flush fs-4">
         <li class="list-group-item py-3">
             <a
