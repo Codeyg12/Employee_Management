@@ -87,6 +87,7 @@ def add_role(request):
 def view_employees(request):
     if request.user.is_authenticated:
         all_employees = Employee.objects.all()
+        # random_employees = Employee.objects.all().order_by('?')
         employees_per_page = 10
         paginator = Paginator(all_employees, employees_per_page)
         page = request.GET.get('page')

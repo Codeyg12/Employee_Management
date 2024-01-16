@@ -29,17 +29,14 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <!-- "Previous" button -->
           {% if employees.has_previous %}
             <a href="?page={{ employees.previous_page_number }}" class="btn btn-dark"><i class="fa-solid fa-arrow-left"></i>&nbsp; Previous</a>
           {% endif %}
         </div>
         <div  class="d-grid gap-2 col-2 mx-auto">
-          <!-- "Add" button -->
           <a href="{% url 'add_employee' %}" class="btn btn-dark">Add</a>
         </div>
         <div class="col text-end">
-          <!-- "Next" button -->
           {% if employees.has_next %}
             <a href="?page={{ employees.next_page_number }}" class="btn btn-dark">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
           {% endif %}
