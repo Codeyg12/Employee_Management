@@ -1,7 +1,6 @@
 {% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<h1 class="display-1 text-center text-white">What would you like to do?</h1>
 <div class="d-flex align-items-center justify-content-center flex-column text-center text-white bg-transparent h-75">
-  <h1 class="display-1">What would you like to do?</h1>
-
   <ul class="list-group container">
     <li class="list-group-item fs-2 bg-transparent border-0">
       <div class="row">
@@ -9,8 +8,8 @@
           Employee
         </p>
         <div class="btn-group col" role="group">
-          <a type="button" class="btn btn-primary fs-2 mx-2">View</a>
-          <a type="button" class="btn btn-primary fs-2 mx-2">Add</a>
+          <a href="{% url 'view_employees' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
+          <a href="{% url 'add_employee' %}" type="button" class="btn btn-dark fs-2 mx-2">Add</a>
         </div>
       </div>
     </li>
@@ -20,8 +19,8 @@
           Role
         </p>
         <div class="btn-group col" role="group">
-          <a type="button" class="btn btn-primary fs-2 mx-2">View</a>
-          <a type="button" class="btn btn-primary fs-2 mx-2">Add</a>
+          <a href="{% url 'view_roles' %}" type="button" class="btn btn-primary fs-2 mx-2">View</a>
+          <a href="{% url 'add_role' %}" type="button" class="btn btn-primary fs-2 mx-2">Add</a>
         </div>
       </div>
     </li>
@@ -31,12 +30,48 @@
           Department
         </p>
         <div class="btn-group col" role="group">
-          <a type="button" class="btn btn-primary fs-2 mx-2">View</a>
-          <a type="button" class="btn btn-primary fs-2 mx-2">Add</a>
+          <a href="{% url 'view_departments' %}" type="button" class="btn btn-primary fs-2 mx-2">View</a>
+          <a href="{% url 'add_department' %}" type="button" class="btn btn-primary fs-2 mx-2">Add</a>
         </div>
       </div>
     </li>
   </ul>
+
+  <!-- <ul class="list-group container">
+    <li class="list-group-item fs-2 bg-transparent border-0">
+      <div class="row">
+        <p class="col-6 text-white ms-auto">
+          Employee
+        </p>
+        <div class="btn-group col-3 mx-auto" role="group">
+          <a href="{% url 'view_employees' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
+          <a href="{% url 'add_employee' %}" type="button" class="btn btn-dark fs-2 mx-2">Add</a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item fs-2 bg-transparent border-0">
+      <div class="row">
+        <p class="col-6 text-white ms-auto">
+          Role
+        </p>
+        <div class="btn-group col-3 mx-auto" role="group">
+          <a href="{% url 'view_roles' %}" type="button" class="btn btn-primary fs-2 mx-2">View</a>
+          <a href="{% url 'add_role' %}" type="button" class="btn btn-primary fs-2 mx-2">Add</a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item fs-2 bg-transparent border-0">
+      <div class="row">
+        <p class="col-6 text-white ms-auto">
+          Department
+        </p>
+        <div class="btn-group col-3 mx-auto" role="group">
+          <a href="{% url 'view_departments' %}" type="button" class="btn btn-primary fs-2 mx-2">View</a>
+          <a href="{% url 'add_department' %}" type="button" class="btn btn-primary fs-2 mx-2">Add</a>
+        </div>
+      </div>
+    </li>
+  </ul> -->
 
   <!-- <div class="dropdown show" id="viewDropdown">
       <a class="btn btn-secondary" id="viewDropdownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
