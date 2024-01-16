@@ -1,5 +1,4 @@
 ## Todo
-- Finish homepage rework
 - Finish possible department page change
 - When selecting role for new employee it auto adds department
 - https://code.djangoproject.com/ticket/27562  https://stackoverflow.com/questions/16925129/generate-unique-id-in-django-from-a-model-field
