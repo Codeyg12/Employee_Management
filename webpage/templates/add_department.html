@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
 <a href="{% url 'home' %}" class="btn btn-outline-light mb-3"><i class="fa-solid fa-arrow-left"></i></a>
+<div class="d-flex align-items-center justify-content-center flex-column text-center bg-transparent h-75 position-relative">
 
-<div class="col-md-6 offset-md-3">
-  <h1>Add Department</h1>
-
-  <form action="{% url 'add_department' %}" method="POST">
+    <h1 class="position-absolute top-0 start-50 translate-middle-x">Add Department</h1>
+    
+    <form class="col-md-6" action="{% url 'add_department' %}" method="POST">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn btn-secondary">Add Department</button>
+    <button type="submit" class="btn btn-outline-light btn-secondary">Add Department</button>
   </form>
 </div>
 
