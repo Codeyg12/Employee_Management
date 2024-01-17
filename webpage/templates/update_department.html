@@ -1,11 +1,17 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="col-md-6 offset-md-3">
-  <h1>Update Department</h1>
+<a href="{% url 'department' current_department.id %}" class="btn btn-outline-light mb-3"><i class="fa-solid fa-arrow-left"></i></a>
+<div
+  class="d-flex align-items-center justify-content-center flex-column text-center bg-transparent h-75 position-relative">
+  <h1 class="position-absolute top-0 start-50 translate-middle-x">
+    Update Department
+  </h1>
 
-  <form method="POST">
+  <form class="col-md-6" method="POST">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn btn-secondary">Update Department</button>
+    <button type="submit" class="btn btn-outline-light btn-secondary">
+      Update Department
+    </button>
   </form>
 </div>
 

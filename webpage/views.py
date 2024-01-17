@@ -181,7 +181,7 @@ def update_department(request, pk):
             form.save()
             messages.success(request, 'Department updated')
             return redirect('view_departments')
-        return render(request, 'update_department.html', {'form': form})
+        return render(request, 'update_department.html', {'form': form, 'current_department': current_department})
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
