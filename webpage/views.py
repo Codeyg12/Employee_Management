@@ -212,7 +212,7 @@ def update_role(request, pk):
             form.save()
             messages.success(request, 'Role updated')
             return redirect('view_roles')
-        return render(request, 'update_role.html', {'form': form})
+        return render(request, 'update_role.html', {'form': form, 'role': current_role})
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
@@ -225,7 +225,7 @@ def update_employee(request, pk):
             form.save()
             messages.success(request, 'Employee updated')
             return redirect('view_employees')
-        return render(request, 'update_employee.html', {'form': form})
+        return render(request, 'update_employee.html', {'form': form, 'employee': current_employee})
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
