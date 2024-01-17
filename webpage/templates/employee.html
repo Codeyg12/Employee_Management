@@ -16,7 +16,7 @@
     </p>
     <p class="card-text"><strong>Manager: </strong>{{ single_employee.manager }}</p>
     <p class="card-text">
-      <strong>Hired On: </strong>{{ single_employee.created_at }}
+      <strong>Hired On: </strong>{{ single_employee.created_at|date:"F d, Y" }}
     </p>
   </div>
 </div>
