@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <a href="{% url 'view_employees' %}" class="btn btn-outline-light mb-3"><i class="fa-solid fa-arrow-left"></i></a>
-<div class="card">
-  <div class="card-header text-bold fs-1">
-    {{ single_employee.first_name }} {{ single_employee.last_name }}
-  </div>
-  <div class="card-body fs-5">
+<div class="d-flex justify-content-center flex-column h-75">
+
+  <div class="card bg-secondary-subtle">
+    <div class="card-header text-center fs-1">
+      {{ single_employee.first_name }} {{ single_employee.last_name }}
+    </div>
+    <div class="card-body fs-5">
     <p class="card-text"><strong>Role: </strong>{{ single_employee.employee_role }}</p>
     <p class="card-text"><strong>Department: </strong>{{ single_employee.employee_department }}</p>
     <p class="card-text">
@@ -17,6 +19,7 @@
       <strong>Hired On: </strong>{{ single_employee.created_at }}
     </p>
   </div>
+</div>
 </div>
 <div class="float-end">
   <a href="{% url 'update_employee' single_employee.id %}" class="btn btn-primary mt-3"><i
