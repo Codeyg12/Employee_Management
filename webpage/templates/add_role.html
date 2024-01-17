@@ -1,14 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
 <a href="{% url 'home' %}" class="btn btn-outline-light mb-3"><i class="fa-solid fa-arrow-left"></i></a>
-<div class="d-flex align-items-center justify-content-center flex-column text-center bg-transparent h-75 position-relative">
+<div
+  class="d-flex align-items-center justify-content-center flex-column text-center bg-transparent h-75 position-relative">
+  <h1 class="position-absolute top-0 start-50 translate-middle-x">Add Role</h1>
 
-    <h1 class="position-absolute top-0 start-50 translate-middle-x">Add Role</h1>
-    
-    <form class="col-md-6" action="{% url 'add_role' %}" method="POST">
+  <form class="col-md-6" action="{% url 'add_role' %}" method="POST">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn btn-outline-light btn-secondary">Add Role</button>
+    <button type="submit" class="btn btn-outline-light btn-secondary">
+      Add Role
+    </button>
   </form>
 </div>
-  
+
 {% endblock %}
