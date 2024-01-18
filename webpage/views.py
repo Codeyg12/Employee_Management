@@ -278,3 +278,6 @@ def get_department_by_role(request):
             return JsonResponse({'error': 'Role not found'}, status=404)
     else:
         return JsonResponse({'error': 'Invalid request'}, status=400)
+
+def custom_404(request, exception):
+    return render(request, 'custom_404.html', status=404)
