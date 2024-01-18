@@ -6,10 +6,36 @@
 
   <h1 class="position-absolute top-0 start-50 translate-middle-x">Add Employee</h1>
 
-  <form class="col-md-6" action="{% url 'add_employee' %}" method="POST">
+  <form class="col-md-6" action="{% url 'add_employee' %}" method="POST" id="addEmployeeForm">
     {% csrf_token %} {{ form.as_p }}
     <button type="submit" class="btn btn-outline-light btn-secondary">Add Employee</button>
   </form>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let form = document.getElementById("addEmployeeForm");
+    let roleDropdown = form.querySelector("#id_employee_role");
+    let departmentDropdown = form.querySelector("#id_employee_department");
+  
+    roleDropdown.addEventListener("change", function() {
+      let selectedRoleId = roleDropdown.value;
+  
+      $.ajax({
+        url: "{% url 'get_department_by_role' %}",
+        type: "GET",
+        data: { role_id: selectedRoleId },
+        success: function(data) {
+          if (data.department_id) {
+            departmentDropdown.value = data.department_id;
+          }
+        },
+        error: function() {
+          console.error("Error fetching department information.");
+        }
+      });
+    });
+  });
+  </script>
 
 {% endblock %}

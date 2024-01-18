@@ -6,6 +6,7 @@ from collections import Counter
 from .forms import RegisterForm, AddDepartmentForm, AddRoleForm, AddEmployeeForm
 from .models import Employee, Role, Department
 import random
+from django.http import JsonResponse
 
 # Create your views here.
 def home(request):
@@ -265,3 +266,15 @@ def department_employees(request, pk):
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
+    
+def get_department_by_role(request):
+    if request.method == 'GET' and 'role_id' in request.GET:
+        role_id = request.GET['role_id']
+        try:
+            role = Role.objects.get(id=role_id)
+            department_id = role.role_department.id
+            return JsonResponse({'department_id': department_id})
+        except Role.DoesNotExist:
+            return JsonResponse({'error': 'Role not found'}, status=404)
+    else:
+        return JsonResponse({'error': 'Invalid request'}, status=400)
