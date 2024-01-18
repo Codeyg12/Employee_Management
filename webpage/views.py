@@ -43,9 +43,6 @@ def register(request):
     
     return render(request, 'register.html', {'form': form})
 
-def add(request):
-    return render(request, 'add.html', {})
-
 def add_employee(request):
     form = AddEmployeeForm(request.POST or None)
     if request.user.is_authenticated:
