@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
 <h1 class="display-1 text-center text-white">What would you like to do?</h1>
-<div class="d-flex align-items-center justify-content-center flex-column text-center text-white bg-transparent h-75">
-  <ul class="list-group container">
+<div class="d-flex align-items-center justify-content-center flex-column text-white bg-transparent me-5 h-75">
+  <ul class="list-group container text-center me-5">
     <li class="list-group-item fs-2 bg-transparent border-0">
       <div class="row">
         <p class="col text-white">
           Employee
         </p>
-        <div class="btn-group col" role="group">
+        <div class="btn-group col me-5" role="group">
           <a href="{% url 'view_employees' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
           <a href="{% url 'add_employee' %}" type="button" class="btn btn-dark fs-2 mx-2">Add</a>
         </div>
@@ -18,7 +18,7 @@
         <p class="col text-white">
           Role
         </p>
-        <div class="btn-group col" role="group">
+        <div class="btn-group col me-5" role="group">
           <a href="{% url 'view_roles' %}" type="button" class="btn btn-primary fs-2 mx-2">View</a>
           <a href="{% url 'add_role' %}" type="button" class="btn btn-primary fs-2 mx-2">Add</a>
         </div>
@@ -29,7 +29,7 @@
         <p class="col text-white">
           Department
         </p>
-        <div class="btn-group col" role="group">
+        <div class="btn-group col me-5" role="group">
           <a href="{% url 'view_departments' %}" type="button" class="btn btn-primary fs-2 mx-2">View</a>
           <a href="{% url 'add_department' %}" type="button" class="btn btn-primary fs-2 mx-2">Add</a>
         </div>
@@ -37,10 +37,10 @@
     </li>
   </ul>
 
-  <!-- <ul class="list-group container">
+  <!-- <ul class="list-group container text-center">
     <li class="list-group-item fs-2 bg-transparent border-0">
       <div class="row">
-        <p class="col-6 text-white ms-auto">
+        <p class="col-6 text-white">
           Employee
         </p>
         <div class="btn-group col-3 mx-auto" role="group">
@@ -51,7 +51,7 @@
     </li>
     <li class="list-group-item fs-2 bg-transparent border-0">
       <div class="row">
-        <p class="col-6 text-white ms-auto">
+        <p class="col-6 text-white">
           Role
         </p>
         <div class="btn-group col-3 mx-auto" role="group">
@@ -62,7 +62,7 @@
     </li>
     <li class="list-group-item fs-2 bg-transparent border-0">
       <div class="row">
-        <p class="col-6 text-white ms-auto">
+        <p class="col-6 text-white">
           Department
         </p>
         <div class="btn-group col-3 mx-auto" role="group">
