@@ -13,8 +13,8 @@
         </tr>
       </thead>
       <tbody>
-        {% if employees %}
-          {% for employee in employees %}
+        {% if current %}
+          {% for employee in current %}
             <tr class="clickable" onclick="location.href=`{% url 'employee' employee.id %}`" style="cursor: pointer;">
               <td>{{ employee.first_name }}</td>
               <td>{{ employee.last_name }}</td>
@@ -29,16 +29,16 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          {% if employees.has_previous %}
-            <a href="?page={{ employees.previous_page_number }}" class="btn btn-dark"><i class="fa-solid fa-arrow-left"></i>&nbsp; Previous</a>
+          {% if current.has_previous %}
+            <a href="?page={{ current.previous_page_number }}" class="btn btn-dark"><i class="fa-solid fa-arrow-left"></i>&nbsp; Previous</a>
           {% endif %}
         </div>
         <div  class="d-grid gap-2 col-2 mx-auto">
           <a href="{% url 'add' 'employee' %}" class="btn btn-dark">Add</a>
         </div>
         <div class="col text-end">
-          {% if employees.has_next %}
-            <a href="?page={{ employees.next_page_number }}" class="btn btn-dark">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+          {% if current.has_next %}
+            <a href="?page={{ current.next_page_number }}" class="btn btn-dark">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
           {% endif %}
         </div>
       </div>

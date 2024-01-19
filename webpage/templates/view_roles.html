@@ -11,8 +11,8 @@
         </tr>
     </thead>
     <tbody>
-        {% if roles %}
-        {% for role in roles %}
+        {% if current %}
+        {% for role in current %}
       <tr class="clickable" onclick="location.href=`{% url 'role' role.id %}`" style="cursor: pointer;">
         <th scope="row">{{role.title}}</th>
         {% load my_filters %}
@@ -24,7 +24,22 @@
     {% endif %}
   </table>
 </div>
-  <div class="d-grid gap-2 col-2 mx-auto">
-    <a href="{% url 'add' 'role' %}" class="btn btn-dark">Add</a>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      {% if current.has_previous %}
+        <a href="?page={{ current.previous_page_number }}" class="btn btn-dark"><i class="fa-solid fa-arrow-left"></i>&nbsp; Previous</a>
+      {% endif %}
+    </div>
+    <div  class="d-grid gap-2 col-2 mx-auto">
+      <a href="{% url 'add' 'role' %}" class="btn btn-dark">Add</a>
+    </div>
+    <div class="col text-end">
+      {% if current.has_next %}
+        <a href="?page={{ current.next_page_number }}" class="btn btn-dark">Next &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+      {% endif %}
+    </div>
+  </div>
+
   </div>
 {% endblock %}

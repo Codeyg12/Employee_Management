@@ -8,7 +8,7 @@
           Employee
         </p>
         <div class="btn-group col me-5" role="group">
-          <a href="{% url 'view_employees' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
+          <a href="{% url 'view' 'employee' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
           <a href="{% url 'add' 'employee' %}" type="button" class="btn btn-dark fs-2 mx-2">Add</a>
         </div>
       </div>
@@ -19,7 +19,7 @@
           Role
         </p>
         <div class="btn-group col me-5" role="group">
-          <a href="{% url 'view_roles' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
+          <a href="{% url 'view' 'role' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
           <a href="{% url 'add' 'role' %}" type="button" class="btn btn-dark fs-2 mx-2">Add</a>
         </div>
       </div>
@@ -30,7 +30,7 @@
           Department
         </p>
         <div class="btn-group col me-5" role="group">
-          <a href="{% url 'view_departments' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
+          <a href="{% url 'view' 'department' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
           <a href="{% url 'add' 'department' %}" type="button" class="btn btn-dark fs-2 mx-2">Add</a>
         </div>
       </div>
@@ -44,7 +44,7 @@
           Employee
         </p>
         <div class="btn-group col-3 mx-auto" role="group">
-          <a href="{% url 'view_employees' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
+          <a href="{% url 'view' 'employee' %}" type="button" class="btn btn-dark fs-2 mx-2">View</a>
           <a href="{% url 'add' 'employee' %}" type="button" class="btn btn-dark fs-2 mx-2">Add</a>
         </div>
       </div>
@@ -55,7 +55,7 @@
           Role
         </p>
         <div class="btn-group col-3 mx-auto" role="group">
-          <a href="{% url 'view_roles' %}" type="button" class="btn btn-primary fs-2 mx-2">View</a>
+          <a href="{% url 'view' 'role' %}" type="button" class="btn btn-primary fs-2 mx-2">View</a>
           <a href="{% url 'add' 'role' %}" type="button" class="btn btn-primary fs-2 mx-2">Add</a>
         </div>
       </div>
@@ -66,7 +66,7 @@
           Department
         </p>
         <div class="btn-group col-3 mx-auto" role="group">
-          <a href="{% url 'view_departments' %}" type="button" class="btn btn-primary fs-2 mx-2">View</a>
+          <a href="{% url 'view' 'department' %}" type="button" class="btn btn-primary fs-2 mx-2">View</a>
           <a href="{% url 'add' 'department' %}" type="button" class="btn btn-primary fs-2 mx-2">Add</a>
         </div>
       </div>
@@ -100,21 +100,21 @@
   <!-- <ul class="list-group list-group-flush fs-4">
         <li class="list-group-item py-3">
             <a
-              href="{% url 'view_employees' %}"
+              href="{% url 'view' 'employee' %}"
               class="link-dark text-decoration-none link-opacity-50-hover"
               >View Employee</a
             >
           </li>
           <li class="list-group-item py-3">
             <a
-              href="{% url 'view_departments' %}"
+              href="{% url 'view' 'department' %}"
               class="link-dark text-decoration-none link-opacity-50-hover"
               >View Departments</a
             >
           </li>
           <li class="list-group-item py-3">
             <a
-              href="{% url 'view_roles' %}"
+              href="{% url 'view' 'role' %}"
               class="link-dark text-decoration-none link-opacity-50-hover"
               >View Roles</a
             >

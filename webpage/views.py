@@ -71,39 +71,22 @@ def add(request, name):
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
-
-def view_employees(request):
+    
+def view(request, name):
     if request.user.is_authenticated:
-        all_employees = Employee.objects.all()
-        # random_employees = Employee.objects.all().order_by('?')
-        employees_per_page = 10
-        paginator = Paginator(all_employees, employees_per_page)
+        all = model_map[name]['name'].objects.all()
+        per_page = 8
+        paginator = Paginator(all, per_page)
         page = request.GET.get('page')
 
-        try: 
-            employees = paginator.page(page)
+        try:
+            current = paginator.page(page)
         except PageNotAnInteger:
-            employees = paginator.page(1)
+            current = paginator.page(1)
         except EmptyPage:
-            employees = paginator.page(paginator.num_pages)
-        return render(request, 'view_employees.html', {'employees':employees})
-    else:
-        messages.error(request, 'You must be logged in')
-        return redirect('home')
-
-def view_departments(request):
-    if request.user.is_authenticated:
-        departments = Department.objects.all()
-        return render(request, 'view_departments.html', {'departments':departments})
-    else:
-        messages.error(request, 'You must be logged in')
-        return redirect('home')
-
-def view_roles(request):
-    if request.user.is_authenticated:
-        roles = Role.objects.all()
-        return render(request, 'view_roles.html', {'roles':roles})
-    else:
+            current = paginator.page(paginator.num_pages)
+        return render(request, f'view_{name}s.html', {'current': current})
+    else: 
         messages.error(request, 'You must be logged in')
         return redirect('home')
 
