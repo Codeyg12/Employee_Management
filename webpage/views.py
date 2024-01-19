@@ -191,8 +191,8 @@ def update(request, name, pk):
         form = update_map[name]['form'](request.POST or None, instance=current)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Department updated')
-            return redirect('view_departments')
+            messages.success(request, f'{name.capitalize()} updated')
+            return redirect(f'view_{name}s')
         return render(request, 'update.html', {'form': form, 'current': current, 'name': name})
     else:
         messages.error(request, 'You must be logged in')
