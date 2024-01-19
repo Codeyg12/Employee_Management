@@ -24,6 +24,8 @@ model_map = {
                 },
             }
 
+loginNeeded = 'You must be logged in..'
+
 # Create your views here.
 def home(request):
     if request.method == 'POST':
@@ -71,7 +73,7 @@ def add(request, name):
                 return redirect(update_url)
         return render(request, 'add.html', {'form': form, 'name': name})
     else:
-        messages.error(request, 'You must be logged in')
+        messages.error(request, loginNeeded)
         return redirect('home')
     
 def view(request, name):
@@ -89,7 +91,7 @@ def view(request, name):
             current = paginator.page(paginator.num_pages)
         return render(request, f'view_{name}s.html', {'current': current})
     else: 
-        messages.error(request, 'You must be logged in')
+        messages.error(request, loginNeeded)
         return redirect('home')
 
 def view_budgets(request):
@@ -97,7 +99,7 @@ def view_budgets(request):
         options = Department.objects.all()
         return render(request, 'view_budgets.html', {'options': options})
     else:
-        messages.error(request, 'You must be logged in')
+        messages.error(request, loginNeeded)
         return redirect('home')
 
 def logout_user(request):
@@ -110,7 +112,7 @@ def employee(request, pk):
         single_employee = Employee.objects.get(id=pk)
         return render(request, 'employee.html', {'single_employee': single_employee})
     else:
-        messages.error(request, 'You must be logged in')
+        messages.error(request, loginNeeded)
         return redirect('home')
 
     
@@ -124,7 +126,7 @@ def department(request, pk):
             total += employee.employee_role.salary
         return render(request, 'department.html', {'single_department': single_department, 'employees': employees, 'total': total})
     else:
-        messages.error(request, 'You must be logged in')
+        messages.error(request, loginNeeded)
         return redirect('home')
     
 def delete_record(request, name, pk):
@@ -135,7 +137,7 @@ def delete_record(request, name, pk):
         messages.success(request, f'{name.capitalize()} successfully deleted')
         return redirect(update_url)
     else:
-        messages.error(request, 'You must be logged in')
+        messages.error(request, loginNeeded)
         return redirect('home')
 
 def update(request, name, pk):
@@ -149,7 +151,7 @@ def update(request, name, pk):
             return redirect(update_url)
         return render(request, 'update.html', {'form': form, 'current': current, 'name': name})
     else:
-        messages.error(request, 'You must be logged in')
+        messages.error(request, loginNeeded)
         return redirect('home')
     
 def role(request, pk):
@@ -157,7 +159,7 @@ def role(request, pk):
         single_role = Role.objects.get(id=pk)
         return render(request, 'role.html', {'single_role': single_role})
     else:
-        messages.error(request, 'You must be logged in')
+        messages.error(request, loginNeeded)
         return redirect('home')
 
     
@@ -185,7 +187,7 @@ def budget(request, pk):
 
         return render(request, 'budget.html', {'department': department, 'total': total, 'roles': roles, 'employees': employees})
     else:
-        messages.error(request, 'You must be logged in')
+        messages.error(request, loginNeeded)
         return redirect('home')
     
 def department_employees(request, pk):
@@ -194,7 +196,7 @@ def department_employees(request, pk):
         employees = Employee.objects.filter(employee_department=department)
         return render(request, 'department_employees.html', {'department': department, 'employees': employees})
     else:
-        messages.error(request, 'You must be logged in')
+        messages.error(request, loginNeeded)
         return redirect('home')
     
 def get_department_by_role(request):

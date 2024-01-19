@@ -1,7 +1,4 @@
 ## Todo
-- try to do to 'add' and 'view' what was done to 'update'
-- back button on 'add' from view_employees goes 'home'
-- var for error message in views
 - reusable components
 - check for all unused vars
 - DRY OUT THIS CODE
