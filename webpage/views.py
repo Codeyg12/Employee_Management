@@ -171,15 +171,29 @@ def delete_department(request, pk):
         messages.error(request, 'You must be logged in')
         return redirect('home')
 
-def update_department(request, pk):
+def update(request, name, pk):
     if request.user.is_authenticated:
-        current_department = Department.objects.get(id=pk)
-        form = AddDepartmentForm(request.POST or None, instance=current_department)
+        update_map = {
+            'employee': {
+                'name': Employee,
+                'form': AddEmployeeForm
+                },
+            'role': {
+                'name': Role,
+                'form': AddRoleForm
+                },
+            'department': {
+                'name': Department,
+                'form': AddDepartmentForm
+                },
+            }
+        current = update_map[name]['name'].objects.get(id=pk)
+        form = update_map[name]['form'](request.POST or None, instance=current)
         if form.is_valid():
             form.save()
             messages.success(request, 'Department updated')
             return redirect('view_departments')
-        return render(request, 'update_department.html', {'form': form, 'current_department': current_department})
+        return render(request, 'update.html', {'form': form, 'current': current, 'name': name})
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
@@ -202,32 +216,6 @@ def delete_role(request, pk):
         messages.error(request, 'You must be logged in')
         return redirect('home')
     
-def update_role(request, pk):
-    if request.user.is_authenticated:
-        current_role = Role.objects.get(id=pk)
-        form = AddRoleForm(request.POST or None, instance=current_role)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Role updated')
-            return redirect('view_roles')
-        return render(request, 'update_role.html', {'form': form, 'role': current_role})
-    else:
-        messages.error(request, 'You must be logged in')
-        return redirect('home')
-    
-def update_employee(request, pk):
-    if request.user.is_authenticated:
-        current_employee = Employee.objects.get(id=pk)
-        form = AddEmployeeForm(request.POST or None, instance=current_employee)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Employee updated')
-            return redirect('view_employees')
-        return render(request, 'update_employee.html', {'form': form, 'employee': current_employee})
-    else:
-        messages.error(request, 'You must be logged in')
-        return redirect('home')
-
 def budget(request, pk):
     if request.user.is_authenticated:
         department = Department.objects.get(id=pk)

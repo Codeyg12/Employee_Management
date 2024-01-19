@@ -10,7 +10,7 @@
     <a href="{% url 'department_employees' single_department.id %}" class="btn btn-dark mt-3">View Employees</a>
     <div class="float-end">
     <a
-    href="{% url 'update_department' single_department.id %}"
+    href="{% url 'update' 'department' single_department.id %}"
     class="btn btn-primary mt-3"
     ><i class="fa-solid fa-pen"></i></a
     >
@@ -69,9 +69,10 @@
         Total Budget: {{ total | currency }}
       </div>
 </div>
+
     <div class="float-end">
     <a
-    href="{% url 'update_department' single_department.id %}"
+    href="{% url 'update' 'department' single_department.id %}"
     class="btn btn-primary mt-3"
     ><i class="fa-solid fa-pen"></i></a
     >
