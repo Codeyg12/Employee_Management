@@ -7,6 +7,7 @@ from .forms import RegisterForm, AddDepartmentForm, AddRoleForm, AddEmployeeForm
 from .models import Employee, Role, Department
 import random
 from django.http import JsonResponse
+from django.urls import reverse
 
 model_map = {
             'employee': {
@@ -65,8 +66,9 @@ def add(request, name):
         if request.method == "POST":
             if form.is_valid():
                 form.save()
+                update_url = reverse('view', kwargs={'name': name})
                 messages.success(request, f'New {name.capitalize()} Added')
-                return redirect(f'view_{name}s')
+                return redirect(update_url)
         return render(request, 'add.html', {'form': form, 'name': name})
     else:
         messages.error(request, 'You must be logged in')
@@ -111,15 +113,6 @@ def employee(request, pk):
         messages.error(request, 'You must be logged in')
         return redirect('home')
 
-def delete_employee(request, pk):
-    if request.user.is_authenticated:
-        delete_record = Employee.objects.get(id=pk)
-        delete_record.delete()
-        messages.success(request, 'Employee record deleted')
-        return redirect('view_employees')
-    else:
-        messages.error(request, 'You must be logged in')
-        return redirect('home')
     
 def department(request, pk):
     if request.user.is_authenticated:
@@ -134,12 +127,13 @@ def department(request, pk):
         messages.error(request, 'You must be logged in')
         return redirect('home')
     
-def delete_department(request, pk):
+def delete_record(request, name, pk):
     if request.user.is_authenticated:
-        delete_record = Department.objects.get(id=pk)
+        delete_record = model_map[name]['name'].objects.get(id=pk)
         delete_record.delete()
-        messages.success(request, 'Department successfully deleted')
-        return redirect('view_departments')
+        update_url = reverse('view', kwargs={'name': name})
+        messages.success(request, f'{name.capitalize()} successfully deleted')
+        return redirect(update_url)
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
@@ -150,8 +144,9 @@ def update(request, name, pk):
         form = model_map[name]['form'](request.POST or None, instance=current)
         if form.is_valid():
             form.save()
+            update_url = reverse('view', kwargs={'name': name})
             messages.success(request, f'{name.capitalize()} updated')
-            return redirect(f'view_{name}s')
+            return redirect(update_url)
         return render(request, 'update.html', {'form': form, 'current': current, 'name': name})
     else:
         messages.error(request, 'You must be logged in')
@@ -165,15 +160,6 @@ def role(request, pk):
         messages.error(request, 'You must be logged in')
         return redirect('home')
 
-def delete_role(request, pk):
-    if request.user.is_authenticated:
-        delete_role = Role.objects.get(id=pk)
-        delete_role.delete()
-        messages.success(request, 'Role has been deleted')
-        return redirect('view_roles')
-    else:
-        messages.error(request, 'You must be logged in')
-        return redirect('home')
     
 def budget(request, pk):
     if request.user.is_authenticated:
