@@ -7,7 +7,7 @@
     Add Department
   </h1>
 
-  <form class="col-md-6" action="{% url 'add_department' %}" method="POST">
+  <form class="col-md-6" action="{% url 'add' 'department' %}" method="POST">
     {% csrf_token %} {{ form.as_p }}
     <button type="submit" class="btn btn-outline-light btn-secondary">
       Add Department

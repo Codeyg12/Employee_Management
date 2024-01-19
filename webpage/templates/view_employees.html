@@ -34,7 +34,7 @@
           {% endif %}
         </div>
         <div  class="d-grid gap-2 col-2 mx-auto">
-          <a href="{% url 'add_employee' %}" class="btn btn-dark">Add</a>
+          <a href="{% url 'add' 'employee' %}" class="btn btn-dark">Add</a>
         </div>
         <div class="col text-end">
           {% if employees.has_next %}

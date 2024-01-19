@@ -4,11 +4,11 @@
 <div
   class="d-flex align-items-center justify-content-center flex-column text-center bg-transparent h-75 position-relative">
 
-  <h1 class="position-absolute top-0 start-50 translate-middle-x">Add Employee</h1>
+  <h1 class="position-absolute top-0 start-50 translate-middle-x">Add {{name|capfirst}}</h1>
 
-  <form class="col-md-6" action="{% url 'add' 'employee' %}" method="POST" id="addEmployeeForm">
+  <form class="col-md-6" action="{% url 'add' name %}" method="POST" id="addEmployeeForm">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn btn-outline-light btn-secondary">Add Employee</button>
+    <button type="submit" class="btn btn-outline-light btn-secondary">Add {{name|capfirst}} </button>
   </form>
 </div>
 

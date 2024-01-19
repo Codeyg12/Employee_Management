@@ -8,6 +8,21 @@ from .models import Employee, Role, Department
 import random
 from django.http import JsonResponse
 
+model_map = {
+            'employee': {
+                'name': Employee,
+                'form': AddEmployeeForm
+                },
+            'role': {
+                'name': Role,
+                'form': AddRoleForm
+                },
+            'department': {
+                'name': Department,
+                'form': AddDepartmentForm
+                },
+            }
+
 # Create your views here.
 def home(request):
     if request.method == 'POST':
@@ -43,41 +58,16 @@ def register(request):
     
     return render(request, 'register.html', {'form': form})
 
-def add_employee(request):
-    form = AddEmployeeForm(request.POST or None)
+    
+def add(request, name):
+    form = model_map[name]['form'](request.POST or None)
     if request.user.is_authenticated:
         if request.method == "POST":
             if form.is_valid():
                 form.save()
-                messages.success(request, 'New Employee Added')
-                return redirect('view_employees')
-        return render(request, 'add_employee.html', {'form': form})
-    else:
-        messages.error(request, 'You must be logged in')
-        return redirect('home')
-
-def add_department(request):
-    form = AddDepartmentForm(request.POST or None)
-    if request.user.is_authenticated:
-        if request.method == "POST":
-            if form.is_valid():
-                form.save()
-                messages.success(request, 'New Department Added')
-                return redirect('view_departments')
-        return render(request, 'add_department.html', {'form':form})
-    else:
-        messages.error(request, 'You must be logged in')
-        return redirect('home')  
-
-def add_role(request):
-    form = AddRoleForm(request.POST or None)
-    if request.user.is_authenticated:
-        if request.method == "POST":
-            if form.is_valid():
-                form.save()
-                messages.success(request, 'New Role Added')
-                return redirect('view_roles')
-        return render(request, 'add_role.html', {'form':form})
+                messages.success(request, f'New {name.capitalize()} Added')
+                return redirect(f'view_{name}s')
+        return render(request, 'add.html', {'form': form, 'name': name})
     else:
         messages.error(request, 'You must be logged in')
         return redirect('home')
@@ -173,22 +163,8 @@ def delete_department(request, pk):
 
 def update(request, name, pk):
     if request.user.is_authenticated:
-        update_map = {
-            'employee': {
-                'name': Employee,
-                'form': AddEmployeeForm
-                },
-            'role': {
-                'name': Role,
-                'form': AddRoleForm
-                },
-            'department': {
-                'name': Department,
-                'form': AddDepartmentForm
-                },
-            }
-        current = update_map[name]['name'].objects.get(id=pk)
-        form = update_map[name]['form'](request.POST or None, instance=current)
+        current = model_map[name]['name'].objects.get(id=pk)
+        form = model_map[name]['form'](request.POST or None, instance=current)
         if form.is_valid():
             form.save()
             messages.success(request, f'{name.capitalize()} updated')
