@@ -1,5 +1,5 @@
 ## Todo
-- reusable components
+- finish view.html, figure out the table
 - check for all unused vars
 - DRY OUT THIS CODE
 - Remove budgets, department_employee?

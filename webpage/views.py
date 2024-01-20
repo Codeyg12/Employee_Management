@@ -74,6 +74,7 @@ def view(request, name):
         per_page = 8
         paginator = Paginator(all, per_page)
         page = request.GET.get("page")
+        add_url = reverse("add", kwargs={'name': name})
 
         try:
             current = paginator.page(page)
@@ -81,7 +82,7 @@ def view(request, name):
             current = paginator.page(1)
         except EmptyPage:
             current = paginator.page(paginator.num_pages)
-        return render(request, f"view_{name}s.html", {"current": current})
+        return render(request, f"view_{name}s.html", {"current": current, 'add_url': add_url, 'name': name})
     else:
         messages.error(request, loginNeeded)
         return redirect("home")
