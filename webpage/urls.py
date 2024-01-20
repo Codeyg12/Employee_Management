@@ -13,7 +13,6 @@ urlpatterns = [
     path('department/<int:pk>', views.department, name='department'),
     path('role/<int:pk>', views.role, name='role'),
     path('budget/<int:pk>', views.budget, name='budget'),
-    path('department_employees/<int:pk>', views.department_employees, name='department_employees'),
     path('get_department_by_role', views.get_department_by_role, name='get_department_by_role'),
     path('logout', views.logout_user, name='logout')
 ]

@@ -216,21 +216,6 @@ def budget(request, pk):
         messages.error(request, loginNeeded)
         return redirect("home")
 
-
-def department_employees(request, pk):
-    if request.user.is_authenticated:
-        department = Department.objects.get(id=pk)
-        employees = Employee.objects.filter(employee_department=department)
-        return render(
-            request,
-            "department_employees.html",
-            {"department": department, "employees": employees},
-        )
-    else:
-        messages.error(request, loginNeeded)
-        return redirect("home")
-
-
 def get_department_by_role(request):
     if request.method == "GET" and "role_id" in request.GET:
         role_id = request.GET["role_id"]
