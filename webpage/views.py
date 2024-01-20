@@ -110,7 +110,8 @@ def logout_user(request):
 def employee(request, pk):
     if request.user.is_authenticated:
         single_employee = Employee.objects.get(id=pk)
-        return render(request, 'employee.html', {'single_employee': single_employee})
+        delete_url = reverse('delete_record', kwargs={'name': 'employee','pk': single_employee.id})
+        return render(request, 'employee.html', {'single_employee': single_employee, 'delete_url': delete_url })
     else:
         messages.error(request, loginNeeded)
         return redirect('home')
@@ -119,12 +120,13 @@ def employee(request, pk):
 def department(request, pk):
     if request.user.is_authenticated:
         single_department = Department.objects.get(id=pk)
+        delete_url = reverse('delete_record', kwargs={'name': 'department','pk': single_department.id})
         employees = Employee.objects.filter(employee_department=single_department)
         total = 0
 
         for employee in employees:
             total += employee.employee_role.salary
-        return render(request, 'department.html', {'single_department': single_department, 'employees': employees, 'total': total})
+        return render(request, 'department.html', {'single_department': single_department, 'employees': employees, 'total': total, 'delete_url': delete_url})
     else:
         messages.error(request, loginNeeded)
         return redirect('home')
@@ -157,7 +159,8 @@ def update(request, name, pk):
 def role(request, pk):
     if request.user.is_authenticated:
         single_role = Role.objects.get(id=pk)
-        return render(request, 'role.html', {'single_role': single_role})
+        delete_url = reverse('delete_record', kwargs={'name': 'role','pk': single_role.id})
+        return render(request, 'role.html', {'single_role': single_role, 'delete_url': delete_url})
     else:
         messages.error(request, loginNeeded)
         return redirect('home')
