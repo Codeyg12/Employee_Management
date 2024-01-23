@@ -8,9 +8,9 @@ from django.http import JsonResponse
 from django.urls import reverse
 
 model_map = {
-    "employee": {"name": Employee, "form": AddEmployeeForm},
-    "role": {"name": Role, "form": AddRoleForm},
-    "department": {"name": Department, "form": AddDepartmentForm},
+    "employee": {"name": Employee, "form": AddEmployeeForm, 'headers': ['First Name', 'Last Name', 'Role'], 'table_data': ['first_name', 'last_name', 'employee_role']},
+    "role": {"name": Role, "form": AddRoleForm, 'headers': ['Title', 'Salary', 'Department'], 'table_data': ['title', 'salary', 'role_department']},
+    "department": {"name": Department, "form": AddDepartmentForm, 'headers': ['Department Name'], 'table_data': ['department_name']},
 }
 
 loginNeeded = "You must be logged in.."
@@ -71,10 +71,12 @@ def add(request, name):
 def view(request, name):
     if request.user.is_authenticated:
         all = model_map[name]["name"].objects.all()
-        per_page = 8
+        per_page = 7
         paginator = Paginator(all, per_page)
         page = request.GET.get("page")
         add_url = reverse("add", kwargs={'name': name})
+        headers = model_map[name]['headers']
+        table_data = model_map[name]['table_data']
 
         try:
             current = paginator.page(page)
@@ -82,7 +84,7 @@ def view(request, name):
             current = paginator.page(1)
         except EmptyPage:
             current = paginator.page(paginator.num_pages)
-        return render(request, f"view_{name}s.html", {"current": current, 'add_url': add_url, 'name': name})
+        return render(request, "view.html", {"current": current, 'add_url': add_url, 'name': name, 'table_headers': headers, 'table_data': table_data})
     else:
         messages.error(request, loginNeeded)
         return redirect("home")
