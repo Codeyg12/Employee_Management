@@ -132,14 +132,14 @@ def logout_user(request):
 
 def employee(request, pk):
     if request.user.is_authenticated:
-        single_employee = Employee.objects.get(id=pk)
+        employee = Employee.objects.get(id=pk)
         delete_url = reverse(
-            "delete_record", kwargs={"name": "employee", "pk": single_employee.id}
+            "delete_record", kwargs={"name": "employee", "pk": employee.id}
         )
         return render(
             request,
             "employee.html",
-            {"single_employee": single_employee, "delete_url": delete_url},
+            {"employee": employee, "delete_url": delete_url},
         )
     else:
         messages.error(request, loginNeeded)
@@ -147,11 +147,11 @@ def employee(request, pk):
 
 def department(request, pk):
     if request.user.is_authenticated:
-        single_department = Department.objects.get(id=pk)
+        department = Department.objects.get(id=pk)
         delete_url = reverse(
-            "delete_record", kwargs={"name": "department", "pk": single_department.id}
+            "delete_record", kwargs={"name": "department", "pk": department.id}
         )
-        employees = Employee.objects.filter(employee_department=single_department)
+        employees = Employee.objects.filter(employee_department=department)
         total = 0
         for employee in employees:
             total += employee.employee_role.salary
@@ -159,7 +159,7 @@ def department(request, pk):
             request,
             "department.html",
             {
-                "single_department": single_department,
+                "department": department,
                 "employees": employees,
                 "total": total,
                 "delete_url": delete_url,
@@ -171,12 +171,12 @@ def department(request, pk):
 
 def role(request, pk):
     if request.user.is_authenticated:
-        single_role = Role.objects.get(id=pk)
+        role = Role.objects.get(id=pk)
         delete_url = reverse(
-            "delete_record", kwargs={"name": "role", "pk": single_role.id}
+            "delete_record", kwargs={"name": "role", "pk": role.id}
         )
         return render(
-            request, "role.html", {"single_role": single_role, "delete_url": delete_url}
+            request, "role.html", {"role": role, "delete_url": delete_url}
         )
     else:
         messages.error(request, loginNeeded)

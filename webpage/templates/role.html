@@ -6,20 +6,20 @@
     <div class="card bg-secondary-subtle">
         <div class="card-header text-center fs-2">
             <p>
-                {{ single_role.title }}
+                {{ role.title }}
             </p>
         </div>
         <div class="card-body fs-5">
-            <p class="card-text"><strong>Department: </strong>{{ single_role.role_department }}</p>
+            <p class="card-text"><strong>Department: </strong>{{ role.role_department }}</p>
             <p class="card-text">
                 {% load my_filters %}
-                <strong>Salary: </strong>{{ single_role.salary | currency }}
+                <strong>Salary: </strong>{{ role.salary | currency }}
             </p>
         </div>
     </div>
 </div>
 <div class="float-end">
-    <a href="{% url 'update' 'role' single_role.id %}" class="btn btn-primary mt-3"><i class="fa-solid fa-pen"></i></a>
+    <a href="{% url 'update' 'role' role.id %}" class="btn btn-primary mt-3"><i class="fa-solid fa-pen"></i></a>
 
     <a type="button" class="btn btn-danger mt-3 " data-toggle="modal" data-target="#confirmDeleteModal">
         <i class="fa-solid fa-trash-can"></i>
